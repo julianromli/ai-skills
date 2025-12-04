@@ -226,3 +226,5 @@ Individual skills may have their own licenses. Check each skill's directory for 
 ---
 
 Built for [Factory AI](https://factory.ai) and compatible AI coding assistants.
+
+Curated & Created by Faiz Intifada (@faizntfd)
