@@ -1,6 +1,6 @@
 # AI Skills Collection
 
-A curated collection of AI agent skills designed to enhance Claude's capabilities with specialized knowledge, workflows, and tool integrations. These skills transform Claude from a general-purpose assistant into a domain-specific expert.
+A curated collection of AI agent skills designed to enhance Claude's capabilities with specialized knowledge, workflows, and tool integrations. These skills transform Claude from a general-purpose assistant into a domain-specific expert. Made by Faiz Intifada (@faizntfd)
 
 ## What are Skills?
 
