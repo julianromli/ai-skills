@@ -14,6 +14,7 @@ Skills are modular, self-contained packages that provide:
 
 | Skill | Description | Category |
 |-------|-------------|----------|
+| [clone-website](./skills/clone-website) | Vibe-clone any website into production-ready Next.js 16 code using Firecrawl MCP | Frontend |
 | [frontend-design](./skills/frontend-design) | Create distinctive, production-grade frontend interfaces with high design quality | Frontend |
 | [frontend-ui-animator](./skills/frontend-ui-animator) | Implement purposeful UI animations for Next.js + Tailwind + React projects | Frontend |
 | [frontend-ui-integration](./skills/frontend-ui-integration) | Extend user-facing workflows integrating with existing backend APIs | Frontend |
@@ -30,6 +31,15 @@ Skills are modular, self-contained packages that provide:
 ## Skill Categories
 
 ### Frontend Development
+
+#### `clone-website`
+Vibe-clone any website into production-ready Next.js 16 code using Firecrawl MCP. Features:
+- 3-phase workflow: Scrape → Analysis (mandatory review) → Code Generation
+- Firecrawl MCP integration for intelligent web scraping
+- Design token extraction (colors, typography, spacing, borders)
+- Partial cloning support (clone specific sections like hero, pricing, footer)
+- Image handling with automatic Unsplash fallback
+- Tech stack: Next.js 16 + TypeScript + Tailwind CSS v4 + Shadcn UI + Lucide React
 
 #### `frontend-design`
 Create distinctive, memorable frontend interfaces that avoid generic "AI slop" aesthetics. Features:
@@ -172,6 +182,20 @@ Markdown content with workflows, patterns, and guidelines.
 ```
 
 ## Usage Examples
+
+### Website Cloning
+
+```
+User: "Clone the landing page from stripe.com"
+
+→ Skill scrapes the page using Firecrawl MCP
+→ Analyzes structure, design tokens, and components
+→ Presents analysis report for user review
+→ After confirmation, generates Next.js 16 code:
+  - app/layout.tsx, app/page.tsx, app/globals.css
+  - components/landing/Hero.tsx, Features.tsx, etc.
+  - Downloads images to public/images/
+```
 
 ### Frontend UI Animation
 
