@@ -1,0 +1,4 @@
+interface:
+  display_name: "Refactor Clean"
+  short_description: "Safe dead-code cleanup with test-backed deletion."
+  default_prompt: "Use this skill to detect dead code, classify risk, remove only safe items one at a time, and verify every deletion with tests before continuing."
