@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grainy gradient covers</title>
+<style>
+  :root { --page: #f7f7f4; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--page);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: grid; place-items: center;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wall {
+    display: grid;
+    grid-template-columns: repeat(3, min(330px, 28vw));
+    gap: 22px;
+    padding: 40px;
+  }
+  .card {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    overflow: hidden;
+    isolation: isolate;               /* blend modes stay inside the card */
+    container-type: inline-size;      /* lets text use % of card width */
+    background: var(--base);
+    cursor: default;
+  }
+  /* inner 0.5px faint black border */
+  .card::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    box-shadow: inset 0 0 0 0.5px rgba(0,0,0,.14);
+    pointer-events: none; z-index: 10;
+  }
+  .layer { position: absolute; inset: 0; pointer-events: none; }
+
+  /* blobs: huge soft radial gradients, centred on corners/edges, no hard edge */
+  .blobs { inset: 0; will-change: transform; }
+  .blob {
+    position: absolute; width: var(--s, 100%); height: var(--s, 100%);
+    left: calc(var(--x) - var(--s, 100%) / 2); top: calc(var(--y) - var(--s, 100%) / 2);
+    border-radius: 50%;
+    background: radial-gradient(closest-side,
+      var(--c) 0%,
+      color-mix(in oklab, var(--c) 78%, transparent) 25%,
+      color-mix(in oklab, var(--c) 45%, transparent) 50%,
+      color-mix(in oklab, var(--c) 16%, transparent) 75%,
+      transparent 100%);
+    filter: blur(18px);
+    animation: drift var(--dur, 24s) ease-in-out infinite alternate;
+    animation-delay: var(--delay, 0s);
+  }
+  .b1 { --dur: 22s; }
+  .b2 { --dur: 26s; --delay: -7s; }
+  .b3 { --dur: 28s; --delay: -13s; }
+  .b4 { --dur: 20s; --delay: -4s; }
+  @keyframes drift {
+    0%   { transform: translate(0,0) scale(1); }
+    50%  { transform: translate(3%, -2.5%) scale(1.06); }
+    100% { transform: translate(-2.5%, 3%) scale(.96); }
+  }
+
+  /* pattern: thin white lines, radial mask keeps the centre clear */
+  .pattern {
+    opacity: .3; will-change: transform;
+    -webkit-mask-image: radial-gradient(ellipse 50% 46% at 50% 50%, transparent 30%, #000 100%);
+            mask-image: radial-gradient(ellipse 50% 46% at 50% 50%, transparent 30%, #000 100%);
+  }
+  .pattern svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .pattern svg * { vector-effect: non-scaling-stroke; }
+
+  /* soft light at the cursor */
+  .glow {
+    opacity: 0;
+    background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%),
+      rgba(255,255,255,.28) 0%, rgba(255,255,255,.10) 22%, rgba(255,255,255,0) 45%);
+    mix-blend-mode: soft-light;
+  }
+
+  /* grain: 1 noise pixel = 1 physical pixel */
+  canvas.grain {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    mix-blend-mode: overlay; opacity: .4; pointer-events: none; z-index: 5;
+  }
+
+  .title {
+    position: absolute; inset: 0; z-index: 6;
+    display: grid; place-items: center; text-align: center;
+    color: #fff; font-weight: 400;
+    font-size: 8cqw; line-height: 1.12; letter-spacing: -0.005em;
+    text-shadow: 0 0 1.2em rgba(0,0,0,.10);
+    padding: 0 10%;
+  }
+
+  /* palettes (top light + cool -> bottom dark + warm).
+     Blob centres sit on corners/edges at the height of their colour band. */
+  .p1 { --base: linear-gradient(180deg, #8a92dc 0%, #a28fd2 42%, #cf7c86 60%, #e4603a 80%, #ee9a36 100%); }
+  .p1 .b1 { --c: #7c9be8; --x: 10%; --y: 22%; } .p1 .b2 { --c: #d98bc5; --x: 92%; --y: 24%; }
+  .p1 .b3 { --c: #e2433a; --x: 2%;  --y: 92%; } .p1 .b4 { --c: #f6ad35; --x: 62%; --y: 104%; }
+
+  .p2 { --base: linear-gradient(180deg, #8ba0ab 0%, #98a3a2 30%, #c9874a 55%, #a8461c 78%, #240f0b 100%); }
+  .p2 .b1 { --c: #8aa1ad; --x: 15%; --y: 0%; }  .p2 .b2 { --c: #93a7b1; --x: 88%; --y: 6%; }
+  .p2 .b3 { --c: #ecc07a; --x: 0%;  --y: 52%; --s: 90%; } .p2 .b4 { --c: #dd5a1c; --x: 100%; --y: 72%; --s: 90%; }
+
+  .p3 { --base: linear-gradient(180deg, #cdd7dc 0%, #b4c8cb 32%, #4b8b8c 58%, #1d5162 78%, #0b1f28 100%); }
+  .p3 .b1 { --c: #d4dce0; --x: 30%; --y: 0%; } .p3 .b2 { --c: #c3d1d7; --x: 92%; --y: 10%; }
+  .p3 .b3 { --c: #6db49e; --x: 0%;  --y: 62%; --s: 90%; } .p3 .b4 { --c: #1b5a6d; --x: 100%; --y: 82%; --s: 90%; }
+
+  .p4 { --base: linear-gradient(180deg, #c9d3d6 0%, #b3c0b2 30%, #7f9150 56%, #3c5524 78%, #121c0c 100%); }
+  .p4 .b1 { --c: #ccd6d8; --x: 20%; --y: 2%; } .p4 .b2 { --c: #bfcacd; --x: 90%; --y: 14%; }
+  .p4 .b3 { --c: #b4b968; --x: 0%;  --y: 58%; --s: 90%; } .p4 .b4 { --c: #36531d; --x: 100%; --y: 84%; --s: 90%; }
+
+  .p5 { --base: linear-gradient(180deg, #b7abe2 0%, #a38ad6 34%, #7a4aa6 58%, #45215e 80%, #130819 100%); }
+  .p5 .b1 { --c: #c3b8ea; --x: 10%; --y: 8%; } .p5 .b2 { --c: #e88cce; --x: 100%; --y: 50%; --s: 85%; }
+  .p5 .b3 { --c: #8a5bba; --x: 0%;  --y: 66%; --s: 90%; } .p5 .b4 { --c: #2a1238; --x: 75%; --y: 104%; }
+
+  .p6 { --base: linear-gradient(180deg, #cfd7de 0%, #e0d0c0 32%, #eb8a52 56%, #c84a26 78%, #3f120a 100%); }
+  .p6 .b1 { --c: #d3dbe2; --x: 22%; --y: 0%; } .p6 .b2 { --c: #f8c590; --x: 100%; --y: 44%; --s: 90%; }
+  .p6 .b3 { --c: #ec5a32; --x: 0%;  --y: 74%; --s: 90%; } .p6 .b4 { --c: #6a1f10; --x: 88%; --y: 104%; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    .blobs, .pattern { transform: none !important; }
+    .glow { display: none; }
+  }
+</style>
+</head>
+<body>
+<main class="wall">
+  <article class="card p1" data-pattern="none"><div class="title">Product<br>Teardowns</div></article>
+  <article class="card p2" data-pattern="rays"><div class="title">Indie Builders<br>Weekly</div></article>
+  <article class="card p3" data-pattern="waves"><div class="title">AI Workflow<br>Handbook</div></article>
+  <article class="card p4" data-pattern="contours"><div class="title">Design<br>Notes</div></article>
+  <article class="card p5" data-pattern="dots"><div class="title">Late Night<br>Shipping</div></article>
+  <article class="card p6" data-pattern="lenses"><div class="title">Build in<br>Public</div></article>
+</main>
+
+<script>
+(() => {
+  const SVGNS = "http://www.w3.org/2000/svg";
+  const reduceMQ = matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* ---------- noise tile (128x128 greyscale) ---------- */
+  const NOISE_AMP = 70;   // +-70 around 128; full 0-255 reads as harsh colour speckle
+  const tile = document.createElement("canvas");
+  tile.width = tile.height = 128;
+  (() => {
+    const ctx = tile.getContext("2d");
+    const img = ctx.createImageData(128, 128);
+    for (let i = 0; i < img.data.length; i += 4) {
+      const v = 128 + (Math.random() - 0.5) * 2 * NOISE_AMP | 0;   // grey noise around mid-grey
+      img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+      img.data[i + 3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+  })();
+
+  function paintGrain(card, canvas) {
+    const dpr = window.devicePixelRatio || 1;
+    const r = card.getBoundingClientRect();
+    const w = Math.round(r.width * dpr), h = Math.round(r.height * dpr);
+    if (canvas.width === w && canvas.height === h) return;
+    canvas.width = w; canvas.height = h;           // physical pixels
+    const ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
+    ctx.fillStyle = ctx.createPattern(tile, "repeat");
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  /* ---------- line patterns (viewBox 0..100) ---------- */
+  const P = (d, extra = "") => `<path d="${d}" fill="none" stroke="#fff" stroke-width="0.8" ${extra}/>`;
+  const patterns = {
+    none: () => "",
+    rays() {                       // gently waving rays fanning from below centre
+      let s = "";
+      const ox = 50, oy = 128, n = 30;
+      for (let i = 0; i < n; i++) {
+        const a = Math.PI * (0.03 + 0.94 * i / (n - 1));
+        let d = "";
+        for (let t = 0; t <= 1.0001; t += 0.05) {
+          const len = 14 + t * 160;
+          const wob = Math.sin(t * 9 + i * 0.7) * 2.2 * t;
+          const x = ox - Math.cos(a) * len + Math.sin(a) * wob;
+          const y = oy - Math.sin(a) * len + Math.cos(a) * wob;
+          d += (d ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2);
+        }
+        s += P(d);
+      }
+      return s;
+    },
+    waves() {                      // horizontal sound-wave lines
+      let s = "";
+      for (let k = 0; k < 26; k++) {
+        const y0 = -2 + k * 4.2;
+        let d = "";
+        for (let x = -2; x <= 102; x += 1.5) {
+          const env = 1.2 + 1.6 * Math.sin((x / 100) * Math.PI);
+          const y = y0 + Math.sin(x * 0.11 + k * 0.45) * env + Math.sin(x * 0.043 - k * 0.3) * 1.4;
+          d += (d ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2);
+        }
+        s += P(d);
+      }
+      return s;
+    },
+    contours() {                   // concentric, slightly irregular rings
+      let s = "";
+      const cx = 52, cy = 58;
+      for (let k = 1; k <= 22; k++) {
+        const r = k * 4.6;
+        let d = "";
+        for (let a = 0; a <= Math.PI * 2 + 0.01; a += Math.PI / 60) {
+          const rr = r * (1 + 0.035 * Math.sin(a * 3 + k * 0.5) + 0.02 * Math.sin(a * 5 - k));
+          const x = cx + Math.cos(a) * rr * 1.08, y = cy + Math.sin(a) * rr * 0.92;
+          d += (d ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2);
+        }
+        s += P(d + "Z");
+      }
+      return s;
+    },
+    dots() {                       // even dot grid
+      let s = "";
+      for (let y = 3; y < 100; y += 5.5)
+        for (let x = 3; x < 100; x += 5.5)
+          s += `<circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="0.45" fill="#fff"/>`;
+      return s;
+    },
+    lenses() {                     // vesica / lens outlines around the edges
+      const L = [[14,8,30,0],[52,4,30,0],[88,10,28,0],[6,34,26,90],[94,36,30,90],[30,26,18,90],[72,28,18,90],[14,70,30,0],[50,96,30,0],[88,88,30,0],[6,92,22,90],[94,66,26,90],[32,80,20,90],[70,74,20,90]];
+      return L.map(([x, y, len, rot]) => {
+        const h = len / 2, b = len * 0.22;
+        const d = `M${-h} 0 Q0 ${-b * 2} ${h} 0 Q0 ${b * 2} ${-h} 0Z`;
+        return `<g transform="translate(${x} ${y}) rotate(${rot})">${P(d)}</g>`;
+      }).join("");
+    },
+  };
+
+  /* ---------- spring (stiffness 70, damping ratio 0.86, mass 1) ---------- */
+  const K = 70, ZETA = 0.86, C = 2 * ZETA * Math.sqrt(K);  // c = 2*zeta*sqrt(k*m)
+  class Spring {
+    constructor(v = 0) { this.x = v; this.v = 0; this.target = v; }
+    step(dt) {
+      const a = -K * (this.x - this.target) - C * this.v;
+      this.v += a * dt; this.x += this.v * dt;
+    }
+    get resting() { return Math.abs(this.v) < 1e-4 && Math.abs(this.x - this.target) < 1e-4; }
+  }
+
+  const cards = [...document.querySelectorAll(".card")].map(card => {
+    const blobs = document.createElement("div");
+    blobs.className = "layer blobs";
+    blobs.innerHTML = '<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>';
+    const pattern = document.createElement("div");
+    pattern.className = "layer pattern";
+    const kind = card.dataset.pattern;
+    if (kind !== "none") {
+      pattern.innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="${SVGNS}">${patterns[kind]()}</svg>`;
+    }
+    const glow = document.createElement("div");
+    glow.className = "layer glow";
+    const grain = document.createElement("canvas");
+    grain.className = "grain";
+    card.prepend(blobs, pattern, glow, grain);
+    paintGrain(card, grain);
+
+    const s = { card, blobs, pattern, glow, grain, x: new Spring(), y: new Spring(), g: new Spring() };
+
+    card.addEventListener("pointermove", e => {
+      if (reduceMQ.matches) return;
+      const r = card.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width, ny = (e.clientY - r.top) / r.height;
+      s.x.target = nx - 0.5; s.y.target = ny - 0.5; s.g.target = 1;
+      glow.style.setProperty("--gx", (nx * 100).toFixed(2) + "%");
+      glow.style.setProperty("--gy", (ny * 100).toFixed(2) + "%");
+      kick();
+    });
+    card.addEventListener("pointerleave", () => {
+      s.x.target = 0; s.y.target = 0; s.g.target = 0; kick();
+    });
+    return s;
+  });
+
+  let raf = 0, last = 0;
+  function kick() { if (!raf) { last = performance.now(); raf = requestAnimationFrame(tick); } }
+  function tick(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    let busy = false;
+    for (const s of cards) {
+      const sub = 4;                                  // sub-steps for a stable integration
+      for (let i = 0; i < sub; i++) { s.x.step(dt / sub); s.y.step(dt / sub); s.g.step(dt / sub); }
+      s.blobs.style.transform   = `translate(${(s.x.x * 9).toFixed(3)}%, ${(s.y.x * 9).toFixed(3)}%)`;     // toward cursor
+      s.pattern.style.transform = `translate(${(-s.x.x * 3).toFixed(3)}%, ${(-s.y.x * 3).toFixed(3)}%)`;   // a little the other way
+      s.glow.style.opacity = Math.max(0, Math.min(1, s.g.x)).toFixed(3);
+      if (!(s.x.resting && s.y.resting && s.g.resting)) busy = true;
+    }
+    raf = busy ? requestAnimationFrame(tick) : 0;
+  }
+
+  reduceMQ.addEventListener("change", () => {
+    if (!reduceMQ.matches) return;
+    for (const s of cards) { for (const k of ["x","y","g"]) { s[k].x = s[k].target = 0; s[k].v = 0; }
+      s.blobs.style.transform = s.pattern.style.transform = ""; s.glow.style.opacity = 0; }
+  });
+
+  /* repaint grain when size or DPR changes so it stays 1 physical px */
+  let rt;
+  addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => cards.forEach(s => paintGrain(s.card, s.grain)), 100); });
+})();
+</script>
+</body>
+</html>
