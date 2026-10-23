@@ -66,7 +66,7 @@ hermes cron create \
 Jika ingin mengubah gaya ringkasan, edit file prompt:
 
 ```bash
-~/.hermes/skills/hermes-wag-summarizer/prompts/default-summary-prompt.txt
+~/.hermes/skills/hermes-wag-summarizer/templates/default-summary-prompt.txt
 ```
 
 Lalu arahkan cronjob ke prompt tersebut.
@@ -104,7 +104,7 @@ Lalu arahkan cronjob ke prompt tersebut.
 
 - `scripts/whatsapp-group-summary.py` — Parser utama
 - `scripts/create-group-wrapper.py` — Helper membuat wrapper baru
-- `prompts/default-summary-prompt.txt` — Prompt default yang sudah dioptimalkan
+- `templates/default-summary-prompt.txt` — Prompt default yang sudah dioptimalkan
 - `examples/` — Contoh konfigurasi cronjob
 
 ## Catatan Penting
