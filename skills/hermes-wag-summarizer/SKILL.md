@@ -104,7 +104,7 @@ Lalu arahkan cronjob ke prompt tersebut.
 
 - `scripts/whatsapp-group-summary.py` — Parser utama
 - `scripts/create-group-wrapper.py` — Helper membuat wrapper baru
-- `prompts/default-summary-prompt.txt` — Prompt default yang sudah dioptimalkan
+- `templates/default-summary-prompt.txt` — Prompt default yang sudah dioptimalkan
 - `examples/` — Contoh konfigurasi cronjob
 
 ## Catatan Penting
