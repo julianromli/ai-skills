@@ -66,7 +66,7 @@ hermes cron create \
 Jika ingin mengubah gaya ringkasan, edit file prompt:
 
 ```bash
-~/.hermes/skills/hermes-wag-summarizer/prompts/default-summary-prompt.txt
+~/.hermes/skills/hermes-wag-summarizer/templates/default-summary-prompt.txt
 ```
 
 Lalu arahkan cronjob ke prompt tersebut.
