@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>skeleton-dither demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
+<style>
+  :root { --bg:#f6f6f7; --fg:#141416; --muted:#5f5f68; --line:rgba(20,20,22,.08); --sd-font:"Geist Mono",ui-monospace,monospace; }
+  * { box-sizing:border-box; margin:0; }
+  body { background:var(--bg); color:var(--fg); font:15px/1.5 Geist,system-ui,sans-serif; -webkit-font-smoothing:antialiased; padding:56px 24px; }
+  main { max-width:1000px; margin:0 auto; }
+  .eyebrow { font:500 11px/1 "Geist Mono",monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); text-align:center; }
+  h1 { font-weight:600; font-size:44px; line-height:1.05; letter-spacing:-.03em; text-align:center; margin:14px 0 28px; }
+  .bar { display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:space-between; padding:8px 8px 8px 16px; border:1px solid var(--line); border-radius:999px; background:#fff; margin-bottom:16px; }
+  .group { display:flex; gap:8px; align-items:center; }
+  .glabel { font:500 11px/1 "Geist Mono",monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .seg { display:inline-flex; padding:3px; border-radius:999px; border:1px solid var(--line); }
+  .seg button { font:500 13px/1 Geist,sans-serif; border:0; background:none; color:var(--muted); padding:7px 11px; border-radius:999px; cursor:pointer; }
+  .seg button[aria-pressed="true"] { color:var(--fg); background:#f1f1f3; box-shadow:0 0 0 1px var(--line); }
+  .status { font:12px/1 "Geist Mono",monospace; color:var(--muted); }
+  .cta { font:500 13px/1 Geist,sans-serif; border:0; border-radius:999px; padding:10px 14px; background:var(--fg); color:#fff; cursor:pointer; }
+  .bento { display:grid; grid-template-columns:1.15fr 1fr; gap:16px; align-items:start; }
+  .card { position:relative; background:#fff; border:1px solid var(--line); border-radius:20px; overflow:hidden; box-shadow:0 24px 48px -28px rgba(0,0,0,.18); }
+  .cover { height:220px; } .cover img, .cover .sd-block { width:100%; height:100%; object-fit:cover; display:block; border-radius:0; }
+  .cover .sd-block { --sd-radius:0; }
+  .body { padding:0 20px 20px; }
+  .head { display:flex; justify-content:space-between; align-items:flex-end; margin-top:-30px; }
+  .avatar { width:64px; height:64px; border-radius:50%; border:3px solid #fff; overflow:hidden; display:block; background:#fff; object-fit:cover; }
+  .avatar .sd-block { width:100%; height:100%; }
+  .btn { font:500 13px/1 Geist,sans-serif; background:var(--fg); color:#fff; border-radius:999px; padding:9px 14px; display:inline-block; }
+  .name { font-weight:600; font-size:18px; margin-top:10px; } .role { color:var(--muted); font-size:13px; }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:16px; padding-top:14px; border-top:1px solid var(--line); }
+  .stats dt { font:11px/1.4 "Geist Mono",monospace; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+  .stats dd { font-weight:600; font-size:20px; letter-spacing:-.02em; }
+  .np { display:flex; gap:16px; padding:16px; }
+  .art { width:110px; height:110px; flex:none; border-radius:12px; overflow:hidden; }
+  .art img, .art .sd-block { width:100%; height:100%; object-fit:cover; display:block; }
+  .np-label { font:500 10px/1 "Geist Mono",monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+  .np-title { font-weight:600; font-size:17px; margin-top:8px; } .np-artist { color:var(--muted); font-size:13px; }
+  .np-time { display:flex; justify-content:space-between; font:11px/1 "Geist Mono",monospace; color:var(--muted); margin-top:14px; }
+  .np-main { flex:1; min-width:0; }
+  .slot-line .sd-line { font-size:13px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Loading states</p>
+  <h1>Skeleton dither<br />then decode.</h1>
+  <div class="bar" role="group" aria-label="Demo controls">
+    <div class="group"><span class="glabel">Skeleton</span><div class="seg" id="variant"></div></div>
+    <div class="group"><span class="glabel">Reveal</span><div class="seg" id="preset"></div></div>
+    <span class="status" id="status" aria-live="polite">loading…</span>
+    <button class="cta" id="reload" type="button">↻ Reload</button>
+  </div>
+  <div class="bento">
+    <article class="card" id="profile"></article>
+    <article class="card" id="player"></article>
+  </div>
+</main>
+<script type="module">
+  import { skeletonHTML, createReveal, injectSkeletonCSS } from './skeleton-dither.js';
+  injectSkeletonCSS();
+  const state = { variant: 'dither', preset: 'decode', phase: 'idle' };
+  window.__sd = state;
+  const sk = (o) => skeletonHTML({ variant: state.variant, ...o });
+
+  const profileSkel = () => `
+    <div class="cover">${sk({ rows: 26, seed: 70 })}</div>
+    <div class="body">
+      <div class="head"><span class="avatar">${sk({ rows: 5, circle: true, seed: 40 })}</span>${sk({ rows: 2, width: 72, height: 30, seed: 3 })}</div>
+      <div style="margin-top:12px">${sk({ lines: 2, widths: ['55%', '40%'], seed: 1 })}</div>
+      <div class="stats">${[0, 1, 2].map((i) => `<div>${sk({ lines: 2, widths: ['60%', '45%'], seed: 11 * (i + 1) })}</div>`).join('')}</div>
+    </div>`;
+  const profileReal = `
+    <div class="cover"><img src="images/card-cover.png" alt="Abstract orange sculpture" /></div>
+    <div class="body">
+      <div class="head"><img class="avatar" src="images/card-avatar.png" alt="" /><span class="btn" data-sd="fade">Follow</span></div>
+      <p class="name">Ada Lindqvist</p><p class="role">Visual artist · Stockholm</p>
+      <dl class="stats"><div><dt>Works</dt><dd>128</dd></div><div><dt>Followers</dt><dd>24.6k</dd></div><div><dt>Sales</dt><dd>$41k</dd></div></dl>
+    </div>`;
+  const playerSkel = () => `
+    <div class="np"><div class="art">${sk({ rows: 9, seed: 21 })}</div>
+    <div class="np-main">${sk({ lines: 3, widths: ['40%', '70%', '50%'], seed: 5 })}<div style="margin-top:14px">${sk({ lines: 1, widths: ['100%'], seed: 9 })}</div></div></div>`;
+  const playerReal = `
+    <div class="np"><div class="art"><img src="images/album-art.png" alt="Album art" /></div>
+    <div class="np-main"><p class="np-label">Now playing</p><p class="np-title">Static Bloom</p><p class="np-artist">Glyph Theory</p>
+    <div class="np-time"><span>1:12</span><span>3:28</span></div></div></div>`;
+
+  const cards = [
+    { id: 'profile', el: document.getElementById('profile'), skel: profileSkel, real: profileReal, delay: 1100 },
+    { id: 'player', el: document.getElementById('player'), skel: playerSkel, real: playerReal, delay: 800 },
+  ];
+  let run = 0;
+  async function load() {
+    const my = ++run, t0 = performance.now();
+    state.phase = 'skeleton';
+    document.getElementById('status').textContent = 'loading…';
+    await Promise.all(cards.map(async (c) => {
+      c.el.setAttribute('aria-busy', 'true');
+      c.el.innerHTML = c.skel();
+      await new Promise((r) => setTimeout(r, c.delay)); // fake fetch
+      if (my !== run) return;
+      c.el.innerHTML = c.real;
+      state.phase = 'reveal'; state.last = c.id;
+      await createReveal(c.el, { preset: state.preset }).reveal();
+      c.el.removeAttribute('aria-busy');
+    }));
+    if (my !== run) return;
+    state.phase = 'done';
+    document.getElementById('status').innerHTML = `all ready in <b>${((performance.now() - t0) / 1000).toFixed(2)} s</b>`;
+  }
+  const seg = (id, key, opts) => {
+    const box = document.getElementById(id);
+    const paint = () => box.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.v === state[key]));
+    box.innerHTML = opts.map((v) => `<button type="button" data-v="${v}">${v[0].toUpperCase() + v.slice(1)}</button>`).join('');
+    box.onclick = (e) => { const v = e.target.dataset?.v; if (v) { state[key] = v; paint(); load(); } };
+    paint();
+  };
+  seg('variant', 'variant', ['dither', 'scan', 'braille', 'terminal']);
+  seg('preset', 'preset', ['decode', 'dither', 'terminal', 'blueprint']);
+  document.getElementById('reload').onclick = load;
+  load();
+</script>
+</body>
+</html>

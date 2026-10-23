@@ -41,6 +41,7 @@ This repository contains reusable skill packages in the `skills/` directory. Eac
 | `requesting-code-review` | Preparing work for code review |
 | `seo-audit` | SEO auditing and diagnostics |
 | `shadcn` | shadcn/ui management and usage |
+| `skeleton-dither` | ASCII dither skeletons and decode reveals |
 | `social-content` | Social media content workflows |
 | `supabase-postgres-best-practices` | Postgres and Supabase optimization |
 | `systematic-debugging` | Structured debugging workflows |
