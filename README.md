@@ -28,6 +28,7 @@ This repository contains reusable skill packages in the `skills/` directory. Eac
 | `frontend-skill` | Strong UI structure for landing pages and apps |
 | `gpt-tasteskill` | Advanced visual taste and motion direction |
 | `grainy-gradient` | Soft grainy gradient backgrounds and covers |
+| `hermes-wag-summarizer` | Automated WhatsApp group summary cronjobs via Hermes |
 | `landing-page-copywriter` | Conversion-focused landing page copy |
 | `make-interfaces-feel-better` | UI polish, motion, and interaction refinement |
 | `pdf` | PDF reading, generation, and review workflows |
