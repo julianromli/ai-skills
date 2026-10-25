@@ -19,6 +19,7 @@ This repository contains reusable skill packages in the `skills/` directory. Eac
 | Skill | Focus |
 | --- | --- |
 | `agent-browser` | Browser automation and web interaction |
+| `agent-qa-testing` | Natural-language web testing with advanced memidex memory and self-improvement |
 | `brainstorming` | Idea shaping, design thinking, and clarification |
 | `clone-website` | Website reverse-engineering and cloning workflows |
 | `collapsible-sidebar` | Sidebar collapse with allow-discrete label fades |
