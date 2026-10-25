@@ -21,6 +21,7 @@ This repository contains reusable skill packages in the `skills/` directory. Eac
 | `agent-browser` | Browser automation and web interaction |
 | `brainstorming` | Idea shaping, design thinking, and clarification |
 | `clone-website` | Website reverse-engineering and cloning workflows |
+| `collapsible-sidebar` | Sidebar collapse with allow-discrete label fades |
 | `composition-patterns` | Scalable React composition patterns |
 | `convex-best-practices` | Production-ready Convex app guidance |
 | `deploy-to-vercel` | Vercel deployment workflows |
