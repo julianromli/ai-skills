@@ -1,0 +1,218 @@
+{
+ "click": {
+  "reel": "Da-q4mZowaf",
+  "from": 1.4,
+  "to": 1.5,
+  "label": "click",
+  "dur": 0.1,
+  "hit": 0.0,
+  "rms_db": -22.8
+ },
+ "pop": {
+  "reel": "Da-q4mZowaf",
+  "from": 2.86,
+  "to": 2.95,
+  "label": "pop",
+  "dur": 0.09,
+  "hit": 0.0,
+  "rms_db": -10.8
+ },
+ "shutter_a": {
+  "reel": "Da-q4mZowaf",
+  "from": 3.36,
+  "to": 3.6,
+  "label": "camera shutter",
+  "dur": 0.24,
+  "hit": 0.012,
+  "rms_db": -20.3
+ },
+ "swoosh": {
+  "reel": "Da-q4mZowaf",
+  "from": 4.23,
+  "to": 4.74,
+  "label": "swoosh",
+  "dur": 0.51,
+  "hit": 0.13,
+  "rms_db": -9.0
+ },
+ "click_b": {
+  "reel": "Da-q4mZowaf",
+  "from": 4.97,
+  "to": 5.08,
+  "label": "click x3 (first)",
+  "dur": 0.11,
+  "hit": 0.012,
+  "rms_db": -23.7
+ },
+ "shutter_clicks_v1": {
+  "reel": "Da-q4mZowaf",
+  "from": 5.89,
+  "to": 6.12,
+  "label": "shutter clicks v1",
+  "dur": 0.23,
+  "hit": 0.0,
+  "rms_db": -26.6
+ },
+ "shutter_b": {
+  "reel": "Da-q4mZowaf",
+  "from": 6.93,
+  "to": 7.16,
+  "label": "camera shutter",
+  "dur": 0.23,
+  "hit": 0.006,
+  "rms_db": -22.9
+ },
+ "shutter_swoosh": {
+  "reel": "Da-q4mZowaf",
+  "from": 8.49,
+  "to": 9.0,
+  "label": "shutter/swoosh",
+  "dur": 0.51,
+  "hit": 0.113,
+  "rms_db": -14.9
+ },
+ "click_x2": {
+  "reel": "Da-q4mZowaf",
+  "from": 9.01,
+  "to": 9.24,
+  "label": "click x2",
+  "dur": 0.23,
+  "hit": 0.014,
+  "rms_db": -23.5
+ },
+ "shutter_clicks_v1b": {
+  "reel": "Da-q4mZowaf",
+  "from": 11.4,
+  "to": 11.62,
+  "label": "shutter clicks v1",
+  "dur": 0.22,
+  "hit": 0.0,
+  "rms_db": -25.7
+ },
+ "shutter_clicks_v2": {
+  "reel": "Da-q4mZowaf",
+  "from": 12.15,
+  "to": 12.4,
+  "label": "shutter clicks v2",
+  "dur": 0.25,
+  "hit": 0.0,
+  "rms_db": -20.3
+ },
+ "shutter_c": {
+  "reel": "Da-q4mZowaf",
+  "from": 13.01,
+  "to": 13.25,
+  "label": "camera shutter",
+  "dur": 0.24,
+  "hit": 0.023,
+  "rms_db": -20.0
+ },
+ "shutter_d": {
+  "reel": "Da-q4mZowaf",
+  "from": 14.01,
+  "to": 14.25,
+  "label": "camera shutter",
+  "dur": 0.24,
+  "hit": 0.023,
+  "rms_db": -19.0
+ },
+ "shutter_swoosh_b": {
+  "reel": "Da-q4mZowaf",
+  "from": 14.77,
+  "to": 15.45,
+  "label": "camera shutter/swoosh",
+  "dur": 0.68,
+  "hit": 0.169,
+  "rms_db": -7.5
+ },
+ "cinematic_woosh": {
+  "reel": "DeIFvqAtoMM",
+  "from": 4.1,
+  "to": 5.2,
+  "label": "Cinematic Woosh",
+  "dur": 1.1,
+  "hit": 0.386,
+  "rms_db": -6.5
+ },
+ "riser": {
+  "reel": "DeIFvqAtoMM",
+  "from": 9.66,
+  "to": 11.62,
+  "label": "Riser",
+  "dur": 1.96,
+  "hit": 1.449,
+  "rms_db": -8.8
+ },
+ "shine": {
+  "reel": "DeIFvqAtoMM",
+  "from": 17.3,
+  "to": 18.0,
+  "label": "Shine",
+  "dur": 0.7,
+  "hit": 0.27,
+  "rms_db": -11.9
+ },
+ "woosh": {
+  "reel": "DeIFvqAtoMM",
+  "from": 18.57,
+  "to": 19.4,
+  "label": "Woosh",
+  "dur": 0.83,
+  "hit": 0.147,
+  "rms_db": -8.7
+ },
+ "button_switch": {
+  "reel": "DfH5Q0NtNn7",
+  "from": 3.72,
+  "to": 3.92,
+  "label": "button switch 01",
+  "dur": 0.2,
+  "hit": 0.002,
+  "rms_db": -21.3
+ },
+ "tight_assembling": {
+  "reel": "DfH5Q0NtNn7",
+  "from": 4.92,
+  "to": 5.42,
+  "label": "tight assembling short",
+  "dur": 0.5,
+  "hit": 0.048,
+  "rms_db": -23.1
+ },
+ "camera_seq03": {
+  "reel": "DfH5Q0NtNn7",
+  "from": 6.11,
+  "to": 7.5,
+  "label": "designed camera sequence 03",
+  "dur": 1.39,
+  "hit": 0.177,
+  "rms_db": -18.5
+ },
+ "whoosh_gentle": {
+  "reel": "DfH5Q0NtNn7",
+  "from": 8.33,
+  "to": 11.2,
+  "label": "whoosh - be gentle",
+  "dur": 2.87,
+  "hit": 0.541,
+  "rms_db": -7.6
+ },
+ "whoosh_glacial": {
+  "reel": "DfH5Q0NtNn7",
+  "from": 11.82,
+  "to": 13.9,
+  "label": "cinematic whoosh glacial",
+  "dur": 2.08,
+  "hit": 0.24,
+  "rms_db": -8.3
+ },
+ "impact": {
+  "reel": "DfH5Q0NtNn7",
+  "from": 14.7,
+  "to": 16.45,
+  "label": "cinematic impact 01",
+  "dur": 1.75,
+  "hit": 0.295,
+  "rms_db": -8.8
+ }
+}

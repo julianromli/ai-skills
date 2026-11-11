@@ -26,6 +26,7 @@ This repository contains reusable skill packages in the `skills/` directory. Eac
 | `composition-patterns` | Scalable React composition patterns |
 | `convex-best-practices` | Production-ready Convex app guidance |
 | `deploy-to-vercel` | Vercel deployment workflows |
+| `faiz-editorial-film-edit` | Archival editorial film edits for presenter videos, rendered with raea |
 | `frontend-design` | High-quality frontend design direction |
 | `frontend-skill` | Strong UI structure for landing pages and apps |
 | `gpt-tasteskill` | Advanced visual taste and motion direction |

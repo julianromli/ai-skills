@@ -1,0 +1,168 @@
+{
+ "_note": "Worked example from the DevFest edit. reels: letter -> file stem in assets/sfx/source (downloaded with yt-dlp from the user's links). cuts: name -> [reel, start s, end s, label]. Find cut points from the reel's on-screen labels and a loudness envelope; check each clip's spectrogram for music or voice.",
+ "reel_urls": {
+  "A": "https://www.instagram.com/p/Da-q4mZowaf/",
+  "E": "https://www.instagram.com/p/DeIFvqAtoMM/",
+  "F": "https://www.instagram.com/p/DfH5Q0NtNn7/"
+ },
+ "reels": {
+  "A": "Da-q4mZowaf",
+  "E": "DeIFvqAtoMM",
+  "F": "DfH5Q0NtNn7"
+ },
+ "cuts": {
+  "click": [
+   "A",
+   1.4,
+   1.5,
+   "click"
+  ],
+  "pop": [
+   "A",
+   2.86,
+   2.95,
+   "pop"
+  ],
+  "shutter_a": [
+   "A",
+   3.36,
+   3.6,
+   "camera shutter"
+  ],
+  "swoosh": [
+   "A",
+   4.23,
+   4.74,
+   "swoosh"
+  ],
+  "click_b": [
+   "A",
+   4.97,
+   5.08,
+   "click x3 (first)"
+  ],
+  "shutter_clicks_v1": [
+   "A",
+   5.89,
+   6.12,
+   "shutter clicks v1"
+  ],
+  "shutter_b": [
+   "A",
+   6.93,
+   7.16,
+   "camera shutter"
+  ],
+  "shutter_swoosh": [
+   "A",
+   8.49,
+   9.0,
+   "shutter/swoosh"
+  ],
+  "click_x2": [
+   "A",
+   9.01,
+   9.24,
+   "click x2"
+  ],
+  "shutter_clicks_v1b": [
+   "A",
+   11.4,
+   11.62,
+   "shutter clicks v1"
+  ],
+  "shutter_clicks_v2": [
+   "A",
+   12.15,
+   12.4,
+   "shutter clicks v2"
+  ],
+  "shutter_c": [
+   "A",
+   13.01,
+   13.25,
+   "camera shutter"
+  ],
+  "shutter_d": [
+   "A",
+   14.01,
+   14.25,
+   "camera shutter"
+  ],
+  "shutter_swoosh_b": [
+   "A",
+   14.77,
+   15.45,
+   "camera shutter/swoosh"
+  ],
+  "cinematic_woosh": [
+   "E",
+   4.1,
+   5.2,
+   "Cinematic Woosh"
+  ],
+  "riser": [
+   "E",
+   9.66,
+   11.62,
+   "Riser"
+  ],
+  "shine": [
+   "E",
+   17.3,
+   18.0,
+   "Shine"
+  ],
+  "woosh": [
+   "E",
+   18.57,
+   19.4,
+   "Woosh"
+  ],
+  "button_switch": [
+   "F",
+   3.72,
+   3.92,
+   "button switch 01"
+  ],
+  "tight_assembling": [
+   "F",
+   4.92,
+   5.42,
+   "tight assembling short"
+  ],
+  "camera_seq03": [
+   "F",
+   6.11,
+   7.5,
+   "designed camera sequence 03"
+  ],
+  "whoosh_gentle": [
+   "F",
+   8.33,
+   11.2,
+   "whoosh - be gentle"
+  ],
+  "whoosh_glacial": [
+   "F",
+   11.82,
+   13.9,
+   "cinematic whoosh glacial"
+  ],
+  "impact": [
+   "F",
+   14.7,
+   16.45,
+   "cinematic impact 01"
+  ]
+ },
+ "titles": {
+  "open_title": "impact",
+  "title_devfest": "riser+impact",
+  "title_tmh": "glacial",
+  "end_devfest": "riser+impact",
+  "end_tmh": "glacial"
+ },
+ "level": {},
+ "variants": {}
+}

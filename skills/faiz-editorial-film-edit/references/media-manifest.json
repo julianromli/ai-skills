@@ -1,0 +1,138 @@
+{
+  "package": "editorial-film-edit",
+  "revision": 3,
+  "prepared_date": "2026-10-10",
+  "purpose": "Bundled style references, not automatic footage sources",
+  "pinterest_links": [
+    "https://pin.it/1WqI339ye",
+    "https://pin.it/5J93OrHQD",
+    "https://pin.it/5a0KpdS5S"
+  ],
+  "pinterest_viewed": false,
+  "files": [
+    {
+      "path": "references/photos/analog_patchwall.png",
+      "kind": "user-supplied-photo-reference",
+      "source_url": null,
+      "rights": "Reference only; no reuse license inferred.",
+      "bytes": 331925,
+      "sha256": "21f356ee3d1dde39a45f8bc53dbba9a7544a1ee3354a9b9d3a2169b3b0bbe894"
+    },
+    {
+      "path": "references/photos/computer_paper_collage.png",
+      "kind": "user-supplied-photo-reference",
+      "source_url": null,
+      "rights": "Reference only; no reuse license inferred.",
+      "bytes": 473065,
+      "sha256": "d81844a9db63c18ffe0b9b448bbc05b90763b42ef7b850b4625624e156929f84"
+    },
+    {
+      "path": "references/photos/crt_cables.png",
+      "kind": "user-supplied-photo-reference",
+      "source_url": null,
+      "rights": "Reference only; no reuse license inferred.",
+      "bytes": 1169818,
+      "sha256": "b00405d0c5ecb7f3a3a257638199ab5359f208cd61f831871d929b363732c2ca"
+    },
+    {
+      "path": "references/photos/eye_collage.png",
+      "kind": "user-supplied-photo-reference",
+      "source_url": null,
+      "rights": "Reference only; no reuse license inferred.",
+      "bytes": 886349,
+      "sha256": "6961bcc1a8f606143cf58965153f5e79e4a98cd9bb9f06567845afeb1c9b873b"
+    },
+    {
+      "path": "references/videos/Ddi7KJjsMjR.mp4",
+      "kind": "external-video-reference",
+      "source_url": "https://www.instagram.com/reel/Ddi7KJjsMjR/",
+      "audio": false,
+      "rights": "Reference only; no reuse license inferred.",
+      "bytes": 9804483,
+      "sha256": "9be0910cb1ca422aafacebadda052ab5c85c0e50701c71c45a009688fdeeffc2"
+    },
+    {
+      "path": "references/frames/Ddi7KJjsMjR_contact.jpg",
+      "kind": "video-reference-contact-sheet",
+      "derived_from": "references/videos/Ddi7KJjsMjR.mp4",
+      "sha256": "a5df4462856a3b46d185687b357036cb208cd6eb3a47c7e8014dddfc5c57a45e",
+      "bytes": 580497
+    },
+    {
+      "path": "references/frames/Ddi7KJjsMjR_dense.jpg",
+      "kind": "video-reference-frame-sequence",
+      "derived_from": "references/videos/Ddi7KJjsMjR.mp4",
+      "sha256": "a965bf6cf49b37057355c6fd724ec82662cc0cdc58ea72f7b1ef0e723e7e7ced",
+      "bytes": 281237
+    },
+    {
+      "path": "references/videos/DduIcDJI3vP.mp4",
+      "kind": "external-video-reference",
+      "source_url": "https://www.instagram.com/reel/DduIcDJI3vP/",
+      "audio": false,
+      "rights": "Reference only; no reuse license inferred.",
+      "bytes": 8899924,
+      "sha256": "c32afbc782557870ff969de9450d689888aca91fdacbd8a556c3e389e249ba20"
+    },
+    {
+      "path": "references/frames/DduIcDJI3vP_contact.jpg",
+      "kind": "video-reference-contact-sheet",
+      "derived_from": "references/videos/DduIcDJI3vP.mp4",
+      "sha256": "71ec5980b99f11d8b8ff4d7604ecf767b370b8ab9866ace659627504498e5145",
+      "bytes": 915857
+    },
+    {
+      "path": "references/frames/DduIcDJI3vP_dense.jpg",
+      "kind": "video-reference-frame-sequence",
+      "derived_from": "references/videos/DduIcDJI3vP.mp4",
+      "sha256": "18138946b86844824156678333b19e54ec7682438cc3bafe1493ec0eac80cbdc",
+      "bytes": 540444
+    },
+    {
+      "path": "references/videos/DeKZK_ZNbUN.mp4",
+      "kind": "external-video-reference",
+      "source_url": "https://www.instagram.com/reel/DeKZK_ZNbUN/",
+      "audio": false,
+      "rights": "Reference only; no reuse license inferred.",
+      "bytes": 2038907,
+      "sha256": "c3a9310ddc4bb603242ac2cc3323049d02cd5eeb5110caf6aa9cff48f2bee3b2"
+    },
+    {
+      "path": "references/frames/DeKZK_ZNbUN_contact.jpg",
+      "kind": "video-reference-contact-sheet",
+      "derived_from": "references/videos/DeKZK_ZNbUN.mp4",
+      "sha256": "d9e2844a638c81fb9f802d015f5870d1942b69891470279019f7d11b04eb9232",
+      "bytes": 109747
+    },
+    {
+      "path": "references/frames/DeKZK_ZNbUN_dense.jpg",
+      "kind": "video-reference-frame-sequence",
+      "derived_from": "references/videos/DeKZK_ZNbUN.mp4",
+      "sha256": "edeb09922a008d5c4181e5da1ab9b3ba5819aacfdd0ba5ec403760d401d429c0",
+      "bytes": 215618
+    },
+    {
+      "path": "references/videos/DeL0qoEvYmD.mp4",
+      "kind": "external-video-reference",
+      "source_url": "https://www.instagram.com/reel/DeL0qoEvYmD/",
+      "audio": false,
+      "rights": "Reference only; no reuse license inferred.",
+      "bytes": 9719598,
+      "sha256": "7ec676b5cc6d18aa392bc82f341352c560514ef467076f7a11820fe54c8f1016"
+    },
+    {
+      "path": "references/frames/DeL0qoEvYmD_contact.jpg",
+      "kind": "video-reference-contact-sheet",
+      "derived_from": "references/videos/DeL0qoEvYmD.mp4",
+      "sha256": "9e455ce926598c2cfc9c4ed5d1088d1cc4baff491707e01fe0ba18f597c8c0dd",
+      "bytes": 491005
+    },
+    {
+      "path": "references/frames/DeL0qoEvYmD_dense.jpg",
+      "kind": "video-reference-frame-sequence",
+      "derived_from": "references/videos/DeL0qoEvYmD.mp4",
+      "sha256": "0eee0b3877e5997ab2aa1d1c5d4e4e97c938bd943d03d34a16b076118c89c95e",
+      "bytes": 356493
+    }
+  ]
+}

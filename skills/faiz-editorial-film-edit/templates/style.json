@@ -1,0 +1,116 @@
+{
+ "_note": "Universal editorial look. Project media, timecodes and text live in timeline.json, not here.",
+ "ref_height": 1440,
+ "_ref_height": "Every px value here and in timeline.json (text size, caption size, grain size, drift, blur, shadows) is designed at this frame height and scaled to the source's height by the engine. Keep 1440.",
+ "fonts": {
+  "sans": {
+   "file": "/System/Library/Fonts/HelveticaNeue.ttc",
+   "index": 1,
+   "name": "Helvetica Neue Bold"
+  },
+  "sans_medium": {
+   "file": "/System/Library/Fonts/HelveticaNeue.ttc",
+   "index": 10,
+   "name": "Helvetica Neue Medium"
+  },
+  "serif": {
+   "file": "/System/Library/Fonts/Supplemental/Didot.ttc",
+   "index": 0,
+   "name": "Didot Regular"
+  },
+  "serif_it": {
+   "file": "/System/Library/Fonts/Supplemental/Didot.ttc",
+   "index": 1,
+   "name": "Didot Italic"
+  },
+  "mono": {
+   "file": "/System/Library/Fonts/Menlo.ttc",
+   "index": 0,
+   "name": "Menlo Regular"
+  },
+  "sans_light": {
+   "file": "/System/Library/Fonts/HelveticaNeue.ttc",
+   "index": 7,
+   "name": "Helvetica Neue Light"
+  }
+ },
+ "colors": {
+  "ink": [
+   0.13,
+   0.12,
+   0.11
+  ],
+  "cream": [
+   0.955,
+   0.94,
+   0.905
+  ],
+  "paper": [
+   0.905,
+   0.878,
+   0.822
+  ],
+  "ochre": [
+   0.7,
+   0.56,
+   0.3
+  ],
+  "oxide": [
+   0.6,
+   0.25,
+   0.19
+  ]
+ },
+ "bw": {
+  "black": 0.075,
+  "white": 0.955,
+  "gamma": 0.86,
+  "soft_s": 0.22,
+  "shoulder": 0.9
+ },
+ "bloom": {
+  "threshold": 0.72,
+  "knee": 0.18,
+  "amount": 0.16,
+  "sigmas": [
+   6,
+   22
+  ]
+ },
+ "grain": {
+  "size": 1.15,
+  "insert": 0.034,
+  "presenter": 0.011,
+  "collage": 0.028,
+  "bank": 8,
+  "png_scale": 0.3,
+  "overlay_gain": 2.4,
+  "overlay_gain_presenter": 2.0,
+  "_raea": "raea draws grain as an overlay blend; overlay_gain matches the additive grain of the reference renderer"
+ },
+ "type_motion": {
+  "enter": 0.38,
+  "exit": 0.22,
+  "rise_em": 0.3,
+  "blur_px": 9,
+  "scale_in": 0.035,
+  "drift_px_s": 5.0,
+  "step_fps": 12.0
+ },
+ "split": {
+  "entry": 0.42,
+  "exit": 0.36
+ },
+ "captions": {
+  "font": "sans_medium",
+  "accent_font": "serif_it",
+  "size": 50,
+  "y": 0.905,
+  "fade": 0.12,
+  "out": 0.14,
+  "shadow_alpha": 0.62,
+  "shadow_sigma": 9
+ },
+ "css_fonts": {},
+ "_css_fonts": "optional per-key override for the CSS face, e.g. {\"sans\": {\"family\": \"Inter\", \"weight\": 700, \"style\": \"normal\", \"baseline\": 0.93}}"
+}

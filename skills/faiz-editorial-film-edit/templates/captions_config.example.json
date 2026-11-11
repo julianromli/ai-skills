@@ -1,0 +1,28 @@
+{
+ "_note": "Approved corrections only. See build_captions.py for every key.",
+ "fix": {
+  "RAI,": [
+   "era",
+   "AI,"
+  ]
+ },
+ "merge": [
+  [
+   "The",
+   "Fest",
+   "DevFest"
+  ]
+ ],
+ "accent": [
+  "komunitas",
+  "relasi,"
+ ],
+ "suppress": [
+  [
+   50.0,
+   54.2
+  ]
+ ],
+ "max_words": 7,
+ "max_chars": 38
+}
