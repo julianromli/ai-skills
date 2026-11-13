@@ -22,6 +22,7 @@ This repository contains reusable skill packages in the `skills/` directory. Eac
 | `brainstorming` | Idea shaping, design thinking, and clarification |
 | `clone-website` | Website reverse-engineering and cloning workflows |
 | `collapsible-sidebar` | Sidebar collapse with allow-discrete label fades |
+| `design-system-from-codebase` | Build a public design system site from an app codebase, then keep it in sync |
 | `design-engineer-router` | Picks and runs Emil Kowalski design skills on every UI task (emil-* skills not included) |
 | `composition-patterns` | Scalable React composition patterns |
 | `convex-best-practices` | Production-ready Convex app guidance |
