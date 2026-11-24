@@ -82,6 +82,10 @@ others: ask him to check the first zoom).
 
 ## 5. Write, then report
 
+Use the app's CLI for every step it supports (Cap: `cap-cli project config get|set`, `validate`,
+`export-preview`, `export`); write files directly only for apps without a CLI (Shotbase via
+`shotbase.py write`, CleanShot `document.json`). Faiz asked for this.
+
 Report per part: before → after length, a table of cuts (recording time, edited time, what, why),
 the boldest cut to check first, zooms with times, backups and how to restore.
 
