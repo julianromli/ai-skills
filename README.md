@@ -51,6 +51,7 @@ This repository contains reusable skill packages in the `skills/` directory. Eac
 | `systematic-debugging` | Structured debugging workflows |
 | `ui-ux-pro-max` | Broad UI/UX system guidance |
 | `web-design-guidelines` | UI review and accessibility checks |
+| `yt-tutor-video-edit` | YouTube tutorial edits from Shotbase, Cap or CleanShot X: cuts, prompt zooms, SRT, chapters, -14 LUFS, merge, HEVC (needs cap-course-edit, not included) |
 
 ## How to Use
 
