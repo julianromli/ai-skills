@@ -4,7 +4,15 @@ All zoom anchors are 0..1 from the **top-left** of the recorded screen. Verified
 
 ## Cap (`*.cap`, in `~/Library/Application Support/so.cap.desktop/recordings/`)
 - Use cap-course-edit's pipeline and `references/cap-project-notes.md` there. CLI:
-  `/Applications/Cap.app/Contents/MacOS/cap-cli` (validate, config get, export-preview, export).
+  `/Applications/Cap.app/Contents/MacOS/cap-cli` (validate, config get/set, export-preview, export).
+- **Do everything the CLI can do through the CLI** (Faiz's rule). Read with
+  `cap-cli project config get <proj> --json` (use `.config` if present), write with
+  `cap-cli project config set <proj> --settings-json "$(cat new.json)" --json`. It needs the **full**
+  document (omitted fields reset to defaults) and refuses invalid values before it writes (tested on
+  macOS: an unchanged document round-trips with 0 differences). Never copy a file over
+  `project-config.json` on macOS. Keep your own copy of what you set, for the next diff.
+- Cap Editor trims do **not** move zooms: after he cuts in the editor, every zoom after the cut is
+  late by the removed length. Check zoom times against your last write and offer to shift them.
 - One `content/segments/segment-N/` per pause/resume. Mic: `audio-input.ogg|m4a` per segment, so
   `prep_audio.py` joins them. A word can be split across two recording segments; that is a pause in
   the recording, not a bad cut.
