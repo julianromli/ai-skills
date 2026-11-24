@@ -1,6 +1,13 @@
 ---
 name: yt-tutor-video-edit
-description: Faiz's YouTube tutorial workflow, from a raw screen recording to an upload-ready video - edit the project in Shotbase, Cap or CleanShot X (cut "cut" markers, retakes, mutters, tighten pauses, zooms on prompts), then subtitles (SRT, max 5 words), YouTube chapters, -14 LUFS audio, merging parts and HEVC compression. Use whenever Faiz gives a .shotbase, .cap or .cleanshotvideo project (one or more parts) for a new video, asks to re-check a cut, to make or redo SRT/chapters, to merge exported parts, to make audio louder, or to compress a video, even if he only names the topic ("next konten: ...").
+description: >-
+  Faiz's YouTube tutorial workflow, from a raw screen recording to an upload-ready video - edit the
+  project in Shotbase, Cap or CleanShot X (cut "cut" markers, retakes, mutters, tighten pauses, zooms
+  on prompts), then subtitles (SRT, max 5 words), YouTube chapters, -14 LUFS audio, merging parts and
+  HEVC compression. Use whenever Faiz gives a .shotbase, .cap or .cleanshotvideo project (one or more
+  parts) for a new video, asks to re-check a cut, to make or redo SRT/chapters, to merge exported
+  parts, to make audio louder, or to compress a video, even if he only names the topic
+  ("next konten: ...").
 ---
 
 # YouTube tutorial video edit
